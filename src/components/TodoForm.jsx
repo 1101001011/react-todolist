@@ -34,11 +34,7 @@ const TodoForm = ({addTodo}) => {
             <MySelect 
                 createCategory={createCategory}
                 defaultValue={defaultValue} setDefaultValue={setDefaultValue}/>
-            <MyButton 
-                btnType="add" 
-                style={{backgroundColor: '#000'}}
-                onClick={(e) => addTodoHandler(e)}
-            >
+            <MyButton onClick={(e) => addTodoHandler(e)}>
                 Add
             </MyButton>
         </form>

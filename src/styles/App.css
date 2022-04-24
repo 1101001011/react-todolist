@@ -34,6 +34,32 @@ body {
     background-color: #fff;
 }
 
+.todo__buttons {
+    display: flex;
+}
+
+.made__button {
+    background-color: #4BB34B;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.made__image {
+    max-width: 20px;
+    filter: invert(100%);
+}
+
+.delete__button {
+    background-color: #de2a2a;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.delete__image {
+    max-width: 20px;
+    filter: invert(100%);
+}
+
 .todo-enter {
     opacity: 0;
     transform: translateX(-350px);

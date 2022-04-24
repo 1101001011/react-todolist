@@ -1,18 +1,32 @@
-import MyButton from "./UI/button/MyButton"
+import React from "react"
 
 const TodoItem = ({todo, remove}) => {
+    const styles = todo.color
     return (
-        <div className="todo" key={todo.id} style={{backgroundColor: todo.color}}>
+        <div 
+            className="todo" key={todo.id} 
+            style={ styles ? { backgroundColor: todo.color} : { border: '1px solid #ccc' }}>
                 <h2>{todo.title}</h2>
                 <div className="todo__buttons">
-                    <MyButton btnType="add">Made</MyButton>
-                    <MyButton 
-
-                        btnType="delete"
+                    <div 
+                        className="made__button"
                         onClick={() => remove(todo)}
                     >
-                        Delete
-                    </MyButton>
+                        <img
+                            className="made__image"
+                            src="https://img.icons8.com/glyph-neue/64/000000/checkmark.png" 
+                            alt=''
+                        />
+                    </div>
+                    <div 
+                        className="delete__button"
+                        onClick={() => remove(todo)}>
+                        <img 
+                            className="delete__image"
+                            src="https://img.icons8.com/ios-glyphs/30/000000/delete-forever.png" 
+                            alt=''
+                        />
+                    </div>
                 </div>
         </div>
     )
