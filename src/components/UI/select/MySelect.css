@@ -1,0 +1,39 @@
+.select {
+    position: relative;
+    margin-left: 10px;
+}
+
+.select__title {
+    width: 170px;
+    height: 100%;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.select__title img {
+    max-width: 16px;
+}
+
+.select__modal {
+    position: absolute;
+    width: 170px;
+    background-color: #fff;
+    opacity: 0;
+}
+
+.select__modal.active {
+    opacity: 1;
+}
+
+.select__category {
+    padding: 10px 11px;
+    cursor: pointer;
+}
+
+.select__category:hover {
+    background-color: #eee;
+}

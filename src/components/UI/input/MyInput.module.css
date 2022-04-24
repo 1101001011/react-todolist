@@ -1,0 +1,10 @@
+.todo__input {
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    font-size: 18px;
+}
+
+.todo__input:focus {
+    outline: none;
+}

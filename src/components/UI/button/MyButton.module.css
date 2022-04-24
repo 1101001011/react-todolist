@@ -1,0 +1,17 @@
+.made__button {
+    padding: 10px 15px;
+    border: none;
+    background: #4BB34B;
+    margin-left: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.delete__button {
+    padding: 10px 10px;
+    border: none;
+    background: #de2a2a;
+    margin-left: 5px;
+    color: #fff;
+    cursor: pointer;
+}
