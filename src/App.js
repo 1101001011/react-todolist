@@ -4,11 +4,7 @@ import TodoList from "./components/TodoList";
 import './styles/App.css'
 
 function App() {
-    const [todos, setTodos] = useState([
-        { id: 1, title: 'Прогулка', category: 'Повседневное' },
-        { id: 2, title: 'Rect JS', category: 'Работа' },
-        { id: 3, title: 'ЕГЭ', category: 'Учеба' }
-    ])
+    const [todos, setTodos] = useState([])
 
     const addTodo = (newTodo) => {
         setTodos([...todos, newTodo])

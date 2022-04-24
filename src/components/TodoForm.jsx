@@ -4,8 +4,8 @@ import MyInput from "./UI/input/MyInput"
 import MySelect from "./UI/select/MySelect"
 
 const TodoForm = ({addTodo}) => {
-    const [todo, setTodo] = useState({ title: '', category: '' })
-    const [defaultValue, setDefaultValue] = useState("Без категории")
+    const [todo, setTodo] = useState({ title: '', category: '', color: '' })
+    const [defaultValue, setDefaultValue] = useState("Categories")
 
     const addTodoHandler = (e) => {
         e.preventDefault()
@@ -13,12 +13,14 @@ const TodoForm = ({addTodo}) => {
             ...todo, id: Date.now()        
         }
         addTodo(newTodo)
-        setTodo({title: '', category: ''})
-        setDefaultValue("Без категории")
+        setTodo({title: '', category: '', color: ''})
+        setDefaultValue("Categories")
     }
 
     const createCategory = (category) => {
-        setTodo({...todo, category: category})
+        if (category === 'Study') setTodo({...todo, category: category, color: '#fff9ed'})
+        if (category === 'Daily') setTodo({...todo, category: category, color: '#edf8ff'})
+        if (category === 'Job') setTodo({...todo, category: category, color: '#ffeded'})
     }
 
     return (
@@ -34,7 +36,7 @@ const TodoForm = ({addTodo}) => {
                 defaultValue={defaultValue} setDefaultValue={setDefaultValue}/>
             <MyButton 
                 btnType="add" 
-                style={{backgroundColor: 'transparent', border: '1px solid #fff'}}
+                style={{backgroundColor: '#000'}}
                 onClick={(e) => addTodoHandler(e)}
             >
                 Add

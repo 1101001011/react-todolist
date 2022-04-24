@@ -4,7 +4,7 @@ import TodoItem from "./TodoItem"
 
 const TodoList = ({remove, todos}) => {
     if (!todos.length) {
-        return <h1 style={{textAlign: 'center', color: 'white'}}>No todos</h1>
+        return <h1 style={{textAlign: 'center'}}>No todos</h1>
     }
 
     return (

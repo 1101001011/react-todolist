@@ -3,9 +3,9 @@ import './MySelect.css'
 
 const MySelect = ({createCategory, defaultValue, setDefaultValue}) => {
     const categories = [
-        { title: 'Учеба' },
-        { title: 'Повседневное' },
-        { title: 'Работа' }
+        { title: 'Study' },
+        { title: 'Daily' },
+        { title: 'Job' }
     ]
     const [active, setActive] = useState(false)
 
