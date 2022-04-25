@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useLocalStorage } from "../hooks/useLocalStorage"
 import MyButton from "./UI/button/MyButton"
 import MyInput from "./UI/input/MyInput"
 import MySelect from "./UI/select/MySelect"
@@ -14,15 +15,16 @@ const TodoForm = ({addTodo}) => {
         else setValidForm(true)
     }, [todo])
 
-    const addTodoHandler = (e) => {
+    const AddTodoHandler = (e) => {
         e.preventDefault()
-        setActive(false)
         const newTodo = {
             ...todo, id: Date.now()        
         }
         addTodo(newTodo)
+        useLocalStorage(newTodo)
         setTodo({title: '', category: '', color: ''})
         setDefaultValue("Categories")
+        setActive(false)
     }
 
     const createCategory = (category) => {
@@ -44,7 +46,7 @@ const TodoForm = ({addTodo}) => {
                 createCategory={createCategory}
                 defaultValue={defaultValue} setDefaultValue={setDefaultValue}
                 active={active} setActive={setActive}/>
-            <MyButton disabled={!validForm} onClick={(e) => addTodoHandler(e)}>
+            <MyButton disabled={!validForm} onClick={(e) => AddTodoHandler(e)}>
                 Add
             </MyButton>
         </form>

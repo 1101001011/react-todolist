@@ -1,23 +1,29 @@
 import { useState } from "react";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
+import { useGetFromLS } from "./hooks/useGetFromLS";
+import { useRemoveFromLS } from "./hooks/useRemoveFromLS";
 import './styles/App.css'
 
 function App() {
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState(useGetFromLS())
 
     const addTodo = (newTodo) => {
         setTodos([...todos, newTodo])
     }
 
-    const removeTodo = (todo) => {
+    const RemoveTodo = (todo) => {
         setTodos(todos.filter(t => t.id !== todo.id))
+        useRemoveFromLS(todo)
     }
 
     return (
         <div className="App">
             <TodoForm addTodo={addTodo}/>
-            <TodoList remove={removeTodo} todos={todos}/>
+            <TodoList 
+                remove={RemoveTodo} 
+                todos={todos}
+            />
         </div>
     );
 }

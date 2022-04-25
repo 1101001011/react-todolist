@@ -1,11 +1,10 @@
 import React from "react"
 
 const TodoItem = ({todo, remove}) => {
-    const styles = todo.color
     return (
         <div 
             className="todo" key={todo.id} 
-            style={ styles ? { backgroundColor: todo.color} : { border: '1px solid #ccc' }}>
+            style={ todo.color ? { backgroundColor: todo.color} : { border: '1px solid #ccc' }}>
                 <h2>{todo.title}</h2>
                 <div className="todo__buttons">
                     <div 
