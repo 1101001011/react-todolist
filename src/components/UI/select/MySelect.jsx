@@ -4,6 +4,7 @@ import './MySelect.css'
 const MySelect = ({createCategory, defaultValue, setDefaultValue, active, setActive}) => {
     const categories = [
         { title: 'Study' },
+        { title: 'Sports' },
         { title: 'Daily' },
         { title: 'Job' }
     ]

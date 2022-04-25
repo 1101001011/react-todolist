@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useLocalStorage } from "../hooks/useLocalStorage"
+import { useTodoCategory } from "../hooks/useTodoCategory"
 import MyButton from "./UI/button/MyButton"
 import MyInput from "./UI/input/MyInput"
 import MySelect from "./UI/select/MySelect"
@@ -18,7 +19,7 @@ const TodoForm = ({addTodo}) => {
     const AddTodoHandler = (e) => {
         e.preventDefault()
         const newTodo = {
-            ...todo, id: Date.now()        
+            ...todo, title: todo.title.trim(), id: Date.now()        
         }
         addTodo(newTodo)
         useLocalStorage(newTodo)
@@ -27,10 +28,8 @@ const TodoForm = ({addTodo}) => {
         setActive(false)
     }
 
-    const createCategory = (category) => {
-        if (category === 'Study') setTodo({...todo, category: category, color: '#fff9ed'})
-        if (category === 'Daily') setTodo({...todo, category: category, color: '#edf8ff'})
-        if (category === 'Job') setTodo({...todo, category: category, color: '#ffeded'})
+    const CreateCategory = (category) => {
+        useTodoCategory(category, todo, setTodo)
     }
 
     return (
@@ -43,7 +42,7 @@ const TodoForm = ({addTodo}) => {
                 onClick={() => setActive(false)}
             />
             <MySelect 
-                createCategory={createCategory}
+                createCategory={CreateCategory}
                 defaultValue={defaultValue} setDefaultValue={setDefaultValue}
                 active={active} setActive={setActive}/>
             <MyButton disabled={!validForm} onClick={(e) => AddTodoHandler(e)}>
