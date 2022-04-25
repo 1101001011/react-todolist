@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import MyButton from "./UI/button/MyButton"
 import MyInput from "./UI/input/MyInput"
 import MySelect from "./UI/select/MySelect"
@@ -6,9 +6,17 @@ import MySelect from "./UI/select/MySelect"
 const TodoForm = ({addTodo}) => {
     const [todo, setTodo] = useState({ title: '', category: '', color: '' })
     const [defaultValue, setDefaultValue] = useState("Categories")
+    const [active, setActive] = useState(false)
+    const [validForm, setValidForm] = useState(false)
+
+    useEffect(() => {
+        if(!todo.title) setValidForm(false)
+        else setValidForm(true)
+    }, [todo])
 
     const addTodoHandler = (e) => {
         e.preventDefault()
+        setActive(false)
         const newTodo = {
             ...todo, id: Date.now()        
         }
@@ -30,11 +38,13 @@ const TodoForm = ({addTodo}) => {
                 type="text"
                 placeholder="Your todo.."
                 onChange={(e) => setTodo({...todo, title: e.target.value})}
+                onClick={() => setActive(false)}
             />
             <MySelect 
                 createCategory={createCategory}
-                defaultValue={defaultValue} setDefaultValue={setDefaultValue}/>
-            <MyButton onClick={(e) => addTodoHandler(e)}>
+                defaultValue={defaultValue} setDefaultValue={setDefaultValue}
+                active={active} setActive={setActive}/>
+            <MyButton disabled={!validForm} onClick={(e) => addTodoHandler(e)}>
                 Add
             </MyButton>
         </form>

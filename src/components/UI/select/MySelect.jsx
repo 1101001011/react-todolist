@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import './MySelect.css'
 
-const MySelect = ({createCategory, defaultValue, setDefaultValue}) => {
+const MySelect = ({createCategory, defaultValue, setDefaultValue, active, setActive}) => {
     const categories = [
         { title: 'Study' },
         { title: 'Daily' },
         { title: 'Job' }
     ]
-    const [active, setActive] = useState(false)
 
     const categoryHandler = (c) => {
         setDefaultValue(c.title)
